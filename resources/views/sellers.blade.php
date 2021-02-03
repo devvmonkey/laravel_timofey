@@ -9,42 +9,55 @@
 
 
         <!-- Список пользователей -->
+
+           <div class="row"> <div class="col-sm"><h1 style="margin:2rem; margin-top:0; text-align:center;" >Список пользователей</h1></div></div> 
+
         <div class="spisok_polz">
-            <h1 class="zag">Список пользователей</h1>
 
             <div class="panel2">
                 <h3>Все пользователи</h3>
-                <table class="table_spisok_polz">
-@foreach($data['users'] as $user) 
-                    <tr>
-                        <td class="one">#</td>
-                        <td class="two">Имя пользователя</td>
+<div class="row row_padded" style="сolor:white !important;">
 
-                        <td class="three">Дата окончания</td>
+                        <div class="col-sm-1"><p class="users_caption">#</p></div>
+                        <div class="col-sm-2"><p class="users_caption">Имя пользователя</p></div>
+			<div class="col-sm-2"><p class="users_caption">Дата начала</p></div>
+
+</div>
+
+
+
+@foreach($data['users'] as $user) 
+<div class="row row_padded">
+
+                        <div class="col-sm-1"><p class="users_caption">{{ $user->id }}</p></div>
+                        <div class="col-sm-2"><p class="users_caption">{{ $user->email }}</p></div>
+                        <div class="col-sm-2"><p class="users_caption">{{ $user->created_at }}</p></div>
+
+
 
 <form method="POST" action="{{ route('user.update', $user->id) }}">
 
 {!! csrf_field() !!}
-                        <td class="four" rowspan="2"><input type="text" name="password" style="width:80px"></td>
-			<td class="four" rowspan="2"><button type="submit">изменить пароль</button></form>
+                        <div class="col-sm-2"> <input type="text" placeholder="новый пароль" name="password""></div>			
+			<div class="col-sm-1" ><button type="submit" style="padding:0; font-size:10px">изменить </button></div></form>
+			<div class="col-sm-1"><a class="users_caption" href="#">Выдать ключ</a></div>
+			<div class="col-sm-1"><a class="users_caption" href="#">Выдать бан</a></div>
 
-</td>
-                        <td class="five" rowspan="2"><a href="{{ route('user.delete', $user->id) }}" onclick="return confirm('Are you sure to delete this user?');">удалить пользователя</a></td>
-                    </tr>
-                    <tr>
-                        <td class="six">{{ $user->id }}</td>
-                        <td class="seven">{{ $user->name }}</td>
-                        <td class="eight">{{ $user->created_at }}</td>
-                    </tr>
+                        <div class="col-sm-1"> <a class="users_caption" href="{{ route('user.delete', $user->id) }}" onclick="return confirm('Are you sure to delete this user?');">удалить пользователя</a></div>
+</div>
+
 @endforeach
-<tr>
-<form method="GET" action="">
-                        <td class="four" rowspan="2"><input type="text" placeholder="введите имя" name="name" style="width:500px"></td>
-			<td class="four" rowspan="2"><button type="submit">найти</button><button type="submit">сбросить</button></form>
-</tr>
 
-                </table>
+
+
+<form method="GET" action="">
+<div class="row row_padded">
+                        <div class="col-sm-6" ><input class="element_padded" type="text" placeholder="введите имя" name="name" style="width:500px"></div>
+			<div class="col-sm-2" ><button class="element_padded" style="width:100%" type="submit" >найти</button></div><div class="col-sm-2"><button style="width:100%;" class="element_padded" type="submit">сбросить</button></div></form>
+
+</div>
             </div>
+</div>
 
 @endsection
 

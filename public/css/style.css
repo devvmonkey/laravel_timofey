@@ -546,25 +546,28 @@
 /* Добавление панели  */
 
 .dob_pan {
-  width: 1522px;
-  height: 820px;
-  margin-left: 25px;
+  width: 100%;
+  height: 70vh;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(2.69971px);
   border-radius: 16.8732px;
   display: block;
-  overflow: auto;
 }
 
+
+
+
+
 .dob_pan h1 {
-  margin-top: 88px;
+  margin-top: 0 !important;
+  padding-top: 88px;
   margin-left: 39%;
   width: 400px;
 }
 
 .dob_pan h2 {
   margin-left: 17%;
-  margin-top: 47px;
+  padding-top: 47px;
   font-weight: 500;
   position: absolute;
   font-size: 24px;
@@ -584,6 +587,49 @@
   margin-top: 45px;
   margin-left: 30%;
 }
+
+.input_social {
+  border: transparent ! important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  background: #1d1a20 !important; 
+  font-size: 22px;
+  color: #fff;
+}
+
+.custom-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.custom-checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.custom-checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #fff;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.custom-checkbox:checked+label::before {
+  border-color: #0b76ef;
+  background-color: #0b76ef;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+
 
 .dob_pan p {
   position: absolute;
@@ -644,8 +690,12 @@ h1 {
 }
 
 .admin_pan ul {
-  padding: 0px 31px;
+  padding: 3rem;
+padding-left:4rem;
+padding-right:4rem;
 }
+
+
 
 .admin_pan li {
   text-align: center;
@@ -672,7 +722,7 @@ h1 {
       rgba(255, 255, 255, 0) 100%
     ),
     #751fb9;
-  width: 242.35px;
+  width: 100%;
   height: 60px;
   box-shadow: 0px 0px 15.9322px rgba(255, 255, 255, 0.05);
   border-radius: 6.63841px;
@@ -700,7 +750,8 @@ h1 {
 .admin_pan {
   justify-content: flex-start;
   margin: 0px;
-  margin-left: 25px;
+  margin-left: 0px;
+
   border-radius: 9px;
   padding: 0;
   background: rgba(0, 0, 0, 0.3);
@@ -961,7 +1012,7 @@ h1 {
 /* Адимн панель с элементами*/
 
 #main {
-  margin: 0 15% 0 15%;
+  
 }
 
 .container {
@@ -1052,13 +1103,65 @@ h1 {
 
 input {
   position: relative;
-  margin-left: 56px;
   border: rgba(0, 0, 0, 0);
   border-bottom: 1px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0);
-  width: 420px;
+  width: 100%;
   font-size: 18px;
   color: #fff;
+}
+
+button{
+font-weight: 500;
+font-size: 19px;
+line-height: 23px;
+letter-spacing: 0.03em;
+color: #ffffff;
+text-decoration: none;
+background: radial-gradient( 138.85% 200.09% at 100% 52.88%, rgba(255, 255, 255, 0.15) 3.42%, rgba(255, 255, 255, 0) 29.98% ), radial-gradient( 40% 57.64% at 1.15% 50%, rgba(255, 255, 255, 0.15) 3.42%, rgba(255, 255, 255, 0) 100% ), #751fb9;
+box-shadow: 0px 0px 15.9322px rgba(255, 255, 255, 0.05);
+border-radius: 6.63841px;
+padding:3rem;
+display:flex;
+align-items: center;
+justify-content: center;
+
+
+}
+
+.main_a{
+font-weight: 500;
+font-size: 19px;
+line-height: 23px;
+letter-spacing: 0.03em;
+color: #ffffff;
+text-decoration: none;
+background: radial-gradient( 138.85% 200.09% at 100% 52.88%, rgba(255, 255, 255, 0.15) 3.42%, rgba(255, 255, 255, 0) 29.98% ), radial-gradient( 40% 57.64% at 1.15% 50%, rgba(255, 255, 255, 0.15) 3.42%, rgba(255, 255, 255, 0) 100% ), #751fb9;
+width: 100%;
+height: 60px;
+box-shadow: 0px 0px 15.9322px rgba(255, 255, 255, 0.05);
+border-radius: 6.63841px;
+padding:3rem;
+display:flex;
+align-items: center;
+justify-content: center;
+
+
+}
+
+.btn{
+padding: 2rem ! important;
+}
+
+.full-width{
+width:100% !important;
+}
+
+
+.input_admin{
+  margin-left: 1rem !important;
+  margin-top: 19% !important;
+
 }
 
 input:hover {
@@ -1211,7 +1314,6 @@ input:hover {
 .spisok_polz {
   position: relative;
   width: 100%;
-  margin: 100px auto 0;
 }
 
 .spisok_polz .zag {
@@ -1268,11 +1370,79 @@ input:hover {
   justify-content: center;
 }
 
+.styled_text{
+color: #fff !important;
+font-size:18px !important;
+margin: 0 !important;
+}
+
+
+.outer-container{
+margin:10rem;
+padding-bottom:0.1rem;
+padding-top:0.1rem;
+background-color:#1d1a20;
+border-radius:2rem;
+}
+
+p{
+margin:0 !important;
+}
+.styled_text_14{
+font-size:14 !important;
+color: #fff !important;
+margin: 0 !important;
+}
+
+.row_padded1{
+padding: 1rem !important;
+}
+
+.inner-container{
+margin:5rem; 
+background-color:#1c181e;
+border-radius:2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .inner-container{
+    margin:0;  }
+
+  .outer-container{
+    margin:0;
+    padding:0;
+  }
+
+}
+
 .table_spisok_polz .one {
   padding-top: 20px;
   padding-bottom: 3px;
   padding-right: 14vw;
   font-size: 13px;
+}
+
+.row_padded{
+padding: 2rem;
+}
+
+.element_padded{
+padding: 2rem;
+}
+
+
+
+button{
+width:100% !important;
+border-color: transparent;
+padding: 1rem;
+}
+
+
+.users_caption
+{
+  font-size: 14px !important;
+  color: #fff;
 }
 
 .table_spisok_polz .two {
@@ -1877,3 +2047,142 @@ input:hover {
 /* <!-- Конец Лог  --> */
 
 /* Конец админ панель */
+
+/* CSS Created by CSS CHECKBOX */
+/**********************************/
+/**** www.CSScheckbox.com *********/
+
+/*general styles for all CSS Checkboxes*/
+label {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+input[type=checkbox].css-checkbox {
+	  position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; 
+    width:1px; 
+    margin:-1px; 
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:15px; 
+	display:inline-block;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -15px;
+}
+
+.css-label{
+	background-image:url(http://csscheckbox.com/checkboxes/dark-check-green.png);
+}
+
+/*specific classes related to Checkbox skins*/
+
+.lite-green-check{background-image:url(http://csscheckbox.com/checkboxes/lite-green-check.png);}
+.lite-blue-check{background-image:url(http://csscheckbox.com/checkboxes/lite-blue-check.png);}
+.lite-gray-check{background-image:url(http://csscheckbox.com/checkboxes/lite-gray-check.png);}
+.lite-cyan-check{background-image:url(http://csscheckbox.com/checkboxes/lite-cyan-check.png);}
+.lite-orange-check{background-image:url(http://csscheckbox.com/checkboxes/lite-orange-check.png);}
+.lite-red-check{background-image:url(http://csscheckbox.com/checkboxes/lite-red-check.png);}
+
+.lite-x-cyan{background-image:url(http://csscheckbox.com/checkboxes/lite-x-cyan.png);}
+.lite-x-gray{background-image:url(http://csscheckbox.com/checkboxes/lite-x-gray.png);}
+.lite-x-blue{background-image:url(http://csscheckbox.com/checkboxes/lite-x-blue.png);}
+.lite-x-orange{background-image:url(http://csscheckbox.com/checkboxes/lite-x-orange.png);}
+.lite-x-red{background-image:url(http://csscheckbox.com/checkboxes/lite-x-red.png);}
+.lite-x-green{background-image:url(http://csscheckbox.com/checkboxes/lite-x-green.png);}
+
+.mac-style{background-image:url(http://csscheckbox.com/checkboxes/mac-style.png);}
+.mario-style{background-image:url(http://csscheckbox.com/checkboxes/mario-style.png);}
+.alert-style{background-image:url(http://csscheckbox.com/checkboxes/alert-style.png);}
+.lite-plus{background-image:url(http://csscheckbox.com/checkboxes/lite-plus.png);}
+.dark-plus{background-image:url(http://csscheckbox.com/checkboxes/dark-plus.png);}
+.dark-plus-cyan{background-image:url(http://csscheckbox.com/checkboxes/dark-plus-cyan.png);}
+.dark-plus-orange{background-image:url(http://csscheckbox.com/checkboxes/dark-plus-orange.png);}
+.dark-check-cyan{background-image:url(http://csscheckbox.com/checkboxes/dark-check-cyan.png);}
+.dark-check-green{background-image:url(http://csscheckbox.com/checkboxes/dark-check-green.png);}
+.dark-check-orange{background-image:url(http://csscheckbox.com/checkboxes/dark-check-orange.png);}
+
+
+.depressed-lite-small{background-image:url(http://csscheckbox.com/checkboxes/depressed-lite-small.png);}
+.elegant{background-image:url(http://csscheckbox.com/checkboxes/elegant.png);}
+.depressed{background-image:url(http://csscheckbox.com/checkboxes/depressed.png);}
+.chrome-style{background-image:url(http://csscheckbox.com/checkboxes/chrome-style.png);}
+.web-two-style{background-image:url(http://csscheckbox.com/checkboxes/web-two-style.png);}
+.vlad{background-image:url(http://csscheckbox.com/checkboxes/vlad.png);}
+.klaus{background-image:url(http://csscheckbox.com/checkboxes/klaus.png);}
+
+input[type=checkbox].css-checkbox.med + label.css-label.med {
+	padding-left:22px;
+    height:17px; 
+	display:inline-block;
+	line-height:17px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox.med:checked + label.css-label.med {
+
+    background-position: 0 -17px;
+}
+input[type=checkbox].css-checkbox.sme + label.css-label.sme {
+	padding-left:22px;
+    height:16px; 
+	display:inline-block;
+	line-height:16px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox.sme:checked + label.css-label.sme{
+
+    background-position: 0 -16px;
+}
+input[type=checkbox].css-checkbox.lrg + label.css-label.lrg {
+	padding-left:22px;
+    height:20px; 
+	display:inline-block;
+	line-height:20px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox.lrg:checked + label.css-label.lrg{
+
+    background-position: 0 -20px;
+}
+
+label{
+margin-bottom:0 !important;
+}
+
+input[type="checkbox"].css-checkbox + label.css-label{
+color:white;
+font-size: 17px;
+}

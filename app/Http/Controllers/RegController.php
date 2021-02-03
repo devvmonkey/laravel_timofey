@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Panel;
 use Auth;
 
 class RegController extends Controller
@@ -19,7 +20,9 @@ class RegController extends Controller
     public function index()
     {
 	if(Auth::id()==1){ 
-	return view('reg');
+    $panels  = Panel::get();
+
+	return view('reg', compact('panels'));
 	}
 	else{
 

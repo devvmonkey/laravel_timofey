@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PanelFormRequest;
+use App\Keyss;
+use App\User;
 use App\Panel;
+use Auth;
+use Route;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,15 +27,23 @@ class PanelController extends Controller
      */
     public function index()
     {
+
+if(isset($_GET['panel_name'])){ 
+    $panel_name = $_GET['panel_name'];
+}
+else{
+$panel_name = ""; 
+}
+
         $sortBy = 'id';
-        $sortDirection = 'ASC';
+        $sortDirection = 'DESC';
 
         if (request('sortby') || request('sortdir')) {
             $sortBy = request('sortby');
             $sortDirection = request('sortdir');
         }
 
-        $panels = Panel::orderBy($sortBy, $sortDirection)->paginate(6);
+        $panels = Panel::orderBy($sortBy, $sortDirection)->where('pages.title','like', '%' . $panel_name . '%')->get();
 
         return view('panels', compact('panels'));
     }
@@ -58,7 +70,7 @@ class PanelController extends Controller
 
         alert()->success('Панель добавленна!');
 	
-	return back();
+	return redirect('/panel');
 
     }
 
@@ -70,7 +82,37 @@ class PanelController extends Controller
      */
     public function show(Panel $panel)
     {
-        return view('panel/show', compact('panel'));
+
+if(isset($_GET['panel_name'])){ 
+    $panel_name = $_GET['panel_name'];
+}
+else{
+$panel_name = ""; 
+}
+
+if(isset($_GET['key_name'])){ 
+    $key_name = $_GET['key_name'];
+}
+else{
+$key_name = ""; 
+}
+
+
+$data = [
+    'keyss'  => Keyss::join('users','keyss.user_id','=', 'users.id')
+			->where('keyss.key_id','like', '%' . $key_name . '%')
+			->limit(3)
+			->get(),
+    'keyss_not_active'  => Keyss::where('is_active', '=', '0')
+			->where('keyss.key_id','like', '%' . $key_name . '%')
+			->limit(3)
+			->get(),
+    'panell'  => Panel::where('id', '=', $panel->id)->get(),  
+
+
+    ];
+
+        return view('panel/show', compact('data'));
     }
 
     /**
@@ -93,11 +135,14 @@ class PanelController extends Controller
      */
     public function update(PanelFormRequest $request, Panel $panel)
     {
-        $panel->update($request->all());
 
-        alert()->success('Panel has been updated.');
+	$name = $request->name;
+        $panel->update(['title' => $name ]);
+
+        alert()->success('Panel name has been updated.');
 
         return back();
+
     }
 
     /**

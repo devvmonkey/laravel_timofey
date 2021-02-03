@@ -49,12 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:2', 'confirmed'],
+            'name' => [],
+            'email' => [],
+            'password' => [],
 		'telegram' => [],
 		'discord' => [],
 		'vk' => [],
+		'rights' => [],
 
         ]);
     }
@@ -74,6 +75,7 @@ class RegisterController extends Controller
 		'telegram' => $data['telegram'],
 		'discord' => $data['discord'],
 		'vk' => $data['vk'],
+		'rights' => $data['rights_hidden'],
 
         ]);
     }

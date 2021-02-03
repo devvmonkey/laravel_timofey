@@ -2,213 +2,164 @@
 
 @section('content')
 
-
+           <div class="container">
+@foreach ($data['panell'] as $panel)
     <h2 style="color:white; text-align:center;" >Панель : {{ $panel->title }}</h2>
+@endforeach 
+
+		<div class="row"><div class="col-sm-4"></div><div class="col-sm-4"><h3 style="text-align:center;  font-size:33px !important;" class="styled_text">Ключи</h3></div><div class="col-sm-4"></div></div>
+		<div class="outer-container">
+                <div class="row"><div class="col-sm-3"><h3 style="text-align:center; margin-top:2rem !important;" class="styled_text">Генерация ключей</h3></div></div>
+		<div class="inner-container">
+		<div class="row" style="margin-bottom:2rem;">
+<div class="col-sm-6" id="keys_div">
 
         <!-- Активные подписки -->
-        <div class="key_generation">
-            <h1 class="zag">Ключи</h1>
-
-            <div class="panel3">
-                <h3>Генерация ключей</h3>
                 <h2>Количество дней</h2>
                 <input type="" class="wwod">
                 <h2>Количество ключей</h2>
                 <input type="" class="wwod">
-                <div> <a class="gen" href="#">
-                        <p>генерировать</p>
-                    </a>
-                    <a class="gen1" href="#">
-                        <p>Скачать ключ</p>
-                    </a>
+</div>
+<div class="col-sm-6"></div>
+</div>
+<div class="row">
+               <div class="col-sm-3"></div><div class="col-sm-3"><button class="" ><p>генерировать</p></button></div>
+                        
+                   <div class="col-sm-3"><button ><p>Скачать ключ</p></button></div><div class=col-sm-3"></div>
+                    
+
+</div>
+                
+</div>
+<div class="row"><div class="col-sm-3"><h3 style="text-align:center; margin-top:2rem !important;" class="styled_text">Неактивированные ключи</h3></div></div>
+
+
+		<div class="inner-container">
+                    <div class="row row_padded" >
+                        <div class="col-sm-3"><p class="styled_text">Ключ</p></div>
+			<div class="col-sm-3"><p class="styled_text">Кол-во дней | часов</p></div>
+			<div class="col-sm-3"><p class="styled_text">Дата создания</p></div>
+		</div>
+                    
+@foreach ($data['keyss_not_active'] as $key_not_active)
+			<div class="row row_padded" >
+                        <div class="col-sm-3"><p class="styled_text">{{ $key_not_active->key_id }}</p></div>
+			<div class="col-sm-3"><p class="styled_text">10 дней 24 часа</p></div>
+			<div class="col-sm-3"><p class="styled_text">{{ $key_not_active->start }}</p></div>
+			<div class="col-sm-3"><a class="styled_text" href="{{ route('keyss.delete', $key_not_active->k_id) }}" class="delete">удалить</a></div>
+</div>
+@endforeach
+
+</div>
+
+<div class="row"><div class="col-sm-3"><h3 style="text-align:center; margin-top:2rem !important;" class="styled_text">Активированные ключи</h3></div></div>
+
+
+		<div class="inner-container">
+                    <div class="row row_padded" >
+
+                        <div class="col-sm-1"><p class="styled_text">Ключ</p></div>
+			<div class="col-sm-2"><p class="styled_text">HWID</p></div>
+			<div class="col-sm-1"><p class="styled_text">Активации</p></div>
+                        <div class="col-sm-1"><p class="styled_text">Конец</p></div>
+			<div class="col-sm-2"><p class="styled_text">Кол-во дней | часов</p></div>
+			<div class="col-sm-1"><p class="styled_text">Создание</p></div>
+			<div class="col-sm-2"><p class="styled_text">Автор</p></div>
+			<div class="col-sm-2"><p class="styled_text">Действия</p></div>
+</div>
+
+@foreach ($data['keyss'] as $key)
+
+                    <div class="row row_padded" >
+                        <div class="col-sm-1"><p class=" styled_text_14">{{ $key->k_id }}</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">{{ $key->key_id }}</p></div>
+			<div class="col-sm-1"><p class=" styled_text_14">{{ $key->start }}</p></div>
+                        <div class="col-sm-1"><p class=" styled_text_14">{{ $key->finish }}</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">10 дней 24 часа</p></div>
+			<div class="col-sm-1"><p class=" styled_text_14">{{ $key->start }}</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">{{ $key->name }}</p></div>
+			<div class="col-sm-2">
+
+                        <a class=" styled_text_14 href="">&#8635;</a>
+                        <a class=" styled_text_14 href="">&#10000;</a>
+                        <a class=" styled_text_14 href="">&#10052;</a>
+                        <a class=" styled_text_14 href="{{ route('keyss.delete', $key->k_id) }}">&#128465;</a></div>
+</div>
+
+@endforeach
+<form method="GET" action="">
+                        <div class="row" style="margin-bottom:2rem;"><input type="text" placeholder="введите имя ключа" name="key_name" style="width:500px"></div>
+			<div class="row">
+               <div class="col-sm-3"></div><div class="col-sm-3"><button type="submit" ><p>найти</p></button></div>
+                        
+                   <div class="col-sm-3"><button type="submit" ><p>сбросить</p></button></div><div class=col-sm-3"></div>
+                    
+
+</div>
+</form>
+
+            </div>
+        </div>
+</div>
+
+           <div class="container" id="panels_div">
+		<div class="row"><div class="col-sm-4"></div><div class="col-sm-4"><h3 style="text-align:center; font-size:33px !important;" class="styled_text">Доступные панели</h3></div><div class="col-sm-4"></div></div>
+		<div class="outer-container">
+                <div class="row"><div class="col-sm-3"><h3 style="text-align:center; margin-top:2rem !important;" class="styled_text">Все панели</h3></div></div>
+		<div class="inner-container">
+                    <div class="row row_padded" >
+                        <div class="col-sm-6"><p class="styled_text">HWID</p></div>
+                        <div class="col-sm-6"><p class="styled_text">Имя пользователя</p></div> 
+                    </div>
+		<hr>
+
+              
+                    <div class="row row_padded" >
+                        <div class="col-sm-6"><p class="styled_text">wqwqwqeeqwds</p></div>
+                        <div class="col-sm-6"><p class="styled_text">qwert@gmail.com</p></div>
+	            </div>
+		<hr>
+<div class="row">
+<form method="GET" action="">
+                        <div class="row" style="padding:1rem"><div class="col-sm-6" ><input class="" type="text" placeholder="введите hwid" name="panel_name" style="width:500px"></div></div>
+			<div class="row" style="padding:1rem"><div class="col-sm-3" ><button class="" type="submit" style="width:100%">найти</button></div><div class="col-sm-3"><button style="width:100%" class="" type="submit">сбросить</button></div></div></form>
+</div>
+
                 </div>
+            </div> 
+       </div>
 
-                <h3>Неактивированные ключи</h3>
-                <table class="table_key_generation">
-                    <tr>
-                        <td class="one">Ключ</td>
-                        <td class="one">Кол-во дней | часов</td>
-                        <td class="one">Дата создания</td>
-                        <td class="two" rowspan="2"><a href="" class="delete">удалить</a></td>
-                    </tr>
-                    <tr>
-                        <td class="three">1111aaa111aaa1111aa11aa111</td>
-                        <td class="three">10 дней 24 часа</td>
-                        <td class="three">01.13.20</td>
-                    </tr>
-                    <tr>
-                        <td class="one">Ключ</td>
-                        <td class="one">Кол-во дней | часов</td>
-                        <td class="one">Дата создания</td>
-                        <td class="two" rowspan="2"><a href="" class="delete">удалить</a></td>
-                    </tr>
-                    <tr>
-                        <td class="three">1111aaa111aaa1111aa11aa111</td>
-                        <td class="three">10 дней 24 часа</td>
-                        <td class="three">01.13.20</td>
-                    </tr>
-                    <tr>
-                        <td class="one">Ключ</td>
-                        <td class="one">Кол-во дней | часов</td>
-                        <td class="one">Дата создания</td>
-                        <td class="two" rowspan="2"><a href="" class="delete">удалить</a></td>
-                    </tr>
-                    <tr>
-                        <td class="three">1111aaa111aaa1111aa11aa111</td>
-                        <td class="three">10 дней 24 часа</td>
-                        <td class="three">01.13.20</td>
-                    </tr>
-                </table>
-                <h3>Активные ключи</h3>
-                <table class="table_key_generation_activ">
-                    <tr>
-                        <td class="one">Ключ</td>
-                        <td class="one">HWID</td>
-                        <td class="one">Активации</td>
-                        <td class="one">Конец</td>
-                        <td class="one">Кол-во дней | часов</td>
-                        <td class="one">Создание</td>
-                        <td class="one">Автор</td>
-                        <td class="two" colspan="4">Действия</td>
-                    </tr>
-                    <tr>
-                        <td class="three">1111aaa111aaa1111aa11aa111</td>
-                        <td class="three">NULL</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">10 дней 24 часа</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">ADMIN</td>
-                        <td class="four"><a href="">&#8635;</a></td>
-                        <td class="four"><a href="">&#10000;</a></td>
-                        <td class="four"><a href="">&#10052;</a></td>
-                        <td class="four"><a href="">&#128465;</a></td>
-                    </tr>
-                    <tr>
-                        <td class="one">Ключ</td>
-                        <td class="one">HWID</td>
-                        <td class="one">Активации</td>
-                        <td class="one">Конец</td>
-                        <td class="one">Кол-во дней | часов</td>
-                        <td class="one">Создание</td>
-                        <td class="one">Автор</td>
-                        <td class="two" colspan="4">Действия</td>
-                    </tr>
-                    <tr>
-                        <td class="three">1111aaa111aaa1111aa11aa111</td>
-                        <td class="three">NULL</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">10 дней 24 часа</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">ADMIN</td>
-                        <td class="four"><a href="">&#8635;</a></td>
-                        <td class="four"><a href="">&#10000;</a></td>
-                        <td class="four"><a href="">&#10052;</a></td>
-                        <td class="four"><a href="">&#128465;</a></td>
-                    </tr>
-                    <tr>
-                        <td class="one">Ключ</td>
-                        <td class="one">HWID</td>
-                        <td class="one">Активации</td>
-                        <td class="one">Конец</td>
-                        <td class="one">Кол-во дней | часов</td>
-                        <td class="one">Создание</td>
-                        <td class="one">Автор</td>
-                        <td class="two" colspan="4">Действия</td>
-                    </tr>
-                    <tr>
-                        <td class="three">1111aaa111aaa1111aa11aa111</td>
-                        <td class="three">NULL</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">10 дней 24 часа</td>
-                        <td class="three">01.13.20</td>
-                        <td class="three">ADMIN</td>
-                        <td class="four"><a href="">&#8635;</a></td>
-                        <td class="four"><a href="">&#10000;</a></td>
-                        <td class="four"><a href="">&#10052;</a></td>
-                        <td class="four"><a href="">&#128465;</a></td>
-                    </tr>
-
-                </table>
-            </div>
-        </div>
-        <!-- Активные подписки -->
-
-        <!-- Баны  -->
-        <div class="bans">
-            <h1 class="zag">Баны</h1>
-
-            <div class="panel4">
-                <h2>Забанить</h2>
-                <h3>Введите hwid ключ или имя пользователя</h3>
-                <input type="" class="wwod">
-                <a class="find" href="#">
-                    <p>Найти</p>
-                </a>
-                <table class="table_bans">
-                    <tr>
-                        <td class="one">HWID</td>
-                        <td class="two" rowspan="2"><a href="#">забанить</a></td>
-                    </tr>
-                    <tr class="strok_">
-                        <td class="three">NULL</td>
-                    </tr>
-                    <tr>
-                        <td class="one">HWID</td>
-                        <td class="two" rowspan="2"><a href="#">забанить</a></td>
-                    </tr>
-                    <tr>
-                        <td class="three">NULL</td>
-                    </tr>
-                    <tr>
-                        <td class="one">HWID</td>
-                        <td class="two" rowspan="2"><a href="#">забанить</a></td>
-                    </tr>
-                    <tr>
-                        <td class="three">NULL</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
         <!-- Конец Баны  -->
 
         <!-- Лог  -->
+            <div class="container" id="log_div">
+		<div class="row"><div class="col-sm-4"></div><div class="col-sm-4"><h3 style="text-align:center; font-size:33px !important;" class="styled_text">Лог</h3></div><div class="col-sm-4"></div></div>
+		<div class="outer-container">
+                <div class="row"><div class="col-sm-3"><h3 style="text-align:center; margin-top:2rem !important;" class="styled_text">Все использованные ключи</h3></div></div>
+		<div class="inner-container">
+                    <div class="row row_padded" >
+                        <div class="col-sm-1"><p class=" styled_text_14">Ключ</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">HWID</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">Дата активации</p></div>
+                        <div class="col-sm-2"><p class=" styled_text_14">Дата окончания</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">Дата создания</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">Автор</p></div>
+			</div>
+@foreach ($data['keyss'] as $key)
+                    <div class="row row_padded" >
+                        <div class="col-sm-1"><p class=" styled_text_14">{{ $key->k_id }}</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">{{ $key->key_id }}</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">{{ $key->start }}</p></div>
+                        <div class="col-sm-2"><p class=" styled_text_14">{{ $key->finish }}</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">{{ $key->start }}</p></div>
+			<div class="col-sm-2"><p class=" styled_text_14">{{ $key->name }}</p></div>
+			</div>
+@endforeach
 
-        <div class="log">
-            <h1 class="zag">Лог</h1>
-            <div class="log_panel">
-                <h2>Все использованные ключи</h2>
-                <table class="table_log">
-                    <tr>
-                        <td class="one">Ключ</td>
-                        <td class="two">HWID</td>
-                        <td class="three">Дата активации</td>
-                        <td class="three">Дата окончания</td>
-                        <td class="three">Дата создания</td>
-                        <td class="four">Автор</td>
-                    </tr>
-                    <tr>
-                        <td class="five">1111aaa111aaa1111aa11aa111</td>
-                        <td class="six">1111aaa111aaa1111aa11aa111</td>
-                        <td class="seven">01.13.20</td>
-                        <td class="seven">01.13.20</td>
-                        <td class="seven">01.13.20</td>
-                        <td class="eight">ADMIN</td>
-                    </tr>
-                </table>
             </div>
         </div>
-
-
-
-
+</div>
         <!-- Конец Лог  -->
-
-
-
-
 
 @endsection
 

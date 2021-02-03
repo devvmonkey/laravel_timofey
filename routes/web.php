@@ -7,6 +7,11 @@ Route::get('panel/{panel}/delete', [
     'as'   => 'panel.delete',
     'uses' => 'PanelController@destroy',
 ]);
+Route::post('panel1/{panel}/update', [
+    'as'   => 'panel1.update',
+    'uses' => 'PanelController@update', 
+]);
+
 Route::get('user/{user}/delete', [
     'as'   => 'user.delete',
     'uses' => 'UserrController@destroy',

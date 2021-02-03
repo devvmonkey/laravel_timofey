@@ -27,7 +27,7 @@ else{
 $name = "";
 }
 $data = [
-    'users'  => User::where('users.name','like', '%' . $name . '%')->limit(3)->get(),
+    'users'  => User::where('users.email','like', '%' . $name . '%')->limit(3)->get(),
     ];
         return view('sellers', compact('data'));
     }
